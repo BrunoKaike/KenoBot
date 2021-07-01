@@ -70,6 +70,24 @@ class KenoBet {
         //Retorna qtd de hits
         size_t size_hits();
 
+        //Seta rodadas
+        void set_rounds(number_type rodadas);
+
+        //Pega rodadas
+        number_type get_rounds();
+
+        //Seta credito por rodada
+        void set_round_wage();
+
+        //Pega credito por rodada
+        cash_type get_round_wage();
+
+        //Pega o credito da rodada ao fim da rodada
+        cash_type get_after_round_wage();
+
+        //Atualiza creditos de acordo com ganho/perca do round
+        void update_wage();
+
     private:
         set_of_numbers_type m_spots; //<! The player's bet.
         cash_type m_wage; //<! The player's wage
@@ -78,7 +96,8 @@ class KenoBet {
         //+++++++++++++NOVOS+++++++++++++
         set_of_numbers_type m_sorteados; //NUMEROS SORTEADOS PARA A APOSTA 
         set_of_numbers_type m_hits; //NUMEROS ACERTADOS
-        
+        number_type m_rounds; //RODADAS
+        cash_type m_round_wage; //CREDITO POR RODADA
 };
 
 #endif
