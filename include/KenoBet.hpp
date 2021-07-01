@@ -87,6 +87,9 @@ class KenoBet {
 
         //Atualiza creditos de acordo com ganho/perca do round
         void update_wage();
+    
+        //Retorna a taxa de retorno do round
+        cash_type get_retorno_round();
 
     private:
         set_of_numbers_type m_spots; //<! The player's bet.
