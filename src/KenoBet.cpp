@@ -4,7 +4,24 @@
 #include <cstdlib>
 
 using namespace std;
-
+set_retorno tabela_de_retorno={
+    {-1},
+    {0, 3},
+    {0, 1, 9},
+    {0, 1, 2, 16},
+    {0, 0.5, 2, 6, 12},
+    {0, 0.5, 1, 3, 15, 50},
+    {0, 0.5, 1, 2, 3, 30, 75},
+    {0, 0.5, 0.5, 1, 6, 12, 36, 100},
+    {0, 0.5, 0.5, 1, 3, 6, 19, 90, 720},
+    {0, 0.5, 0.5, 1, 2, 4, 8, 20, 80, 1200},
+    {0, 0, 0.5, 1, 2, 3, 5, 10, 30, 600, 1800},
+    {0, 0, 0.5, 1, 1, 2, 6, 15, 25, 180, 1000, 3000},
+    {0, 0, 0, 0.5, 1, 2, 4, 24, 72, 250, 500, 2000, 4000},
+    {0, 0, 0, 0.5, 0.5, 3, 4, 5, 20, 80, 240, 500, 3000, 6000},
+    {0, 0, 0, 0.5, 0.5, 2, 3, 5, 12, 50, 150, 500, 1000, 2000, 7500},
+    {0, 0, 0, 0.5, 0.5, 1, 2, 5, 15, 50, 150, 300, 600, 1200, 2500, 10000}
+};
 bool KenoBet::add_number( number_type spot_ ){
     for(int i=0; i<this->m_spots.size(); i++)
         if(spot_ == this->m_spots[i])
@@ -22,7 +39,10 @@ bool KenoBet::set_wage( cash_type wage_ ){
 }
 
 void KenoBet::reset( void ){
-    //ZERAR LISTAS
+    this->m_rounds = this->m_round_wage = this->m_wage = 0;
+    this->m_spots.clear();
+    this->m_hits.clear();
+    this->m_sorteados.clear();
 }
 
 cash_type KenoBet::get_wage( void ) const{
@@ -115,4 +135,28 @@ void KenoBet::print_hits(){
 
 size_t KenoBet::size_hits(){
     return this->m_hits.size();
+}
+
+void KenoBet::set_rounds(number_type rodadas){
+    this->m_rounds = rodadas;
+}
+
+number_type KenoBet::get_rounds(){
+    return this->m_rounds;
+}
+
+void KenoBet::set_round_wage(){
+    this->m_round_wage = this->m_wage/this->m_rounds;
+}
+
+cash_type KenoBet::get_round_wage(){
+    return this->m_round_wage;
+}
+
+cash_type KenoBet::get_after_round_wage(){
+    return this->get_round_wage()*(tabela_de_retorno[this->get_spots().size()][this->m_hits.size()]);;
+}
+
+void KenoBet::update_wage(){
+    this->m_wage = this->m_wage - this->m_round_wage + this->get_round_wage()*(tabela_de_retorno[this->get_spots().size()][this->m_hits.size()]);
 }
