@@ -160,3 +160,7 @@ cash_type KenoBet::get_after_round_wage(){
 void KenoBet::update_wage(){
     this->m_wage = this->m_wage - this->m_round_wage + this->get_round_wage()*(tabela_de_retorno[this->get_spots().size()][this->m_hits.size()]);
 }
+
+cash_type KenoBet::get_retorno_round(){
+    return (tabela_de_retorno[this->get_spots().size()][this->m_hits.size()]);
+}
