@@ -56,7 +56,7 @@ int main(int argc, char *argv[]){
         set_of_numbers_type hits = aposta.get_hits(aposta.get_m_sorteados());
         cout<<"Por apostar "<<aposta.get_round_wage();
         cout<<" e acertar "<<aposta.size_hits()<<"/"<<aposta.get_spots().size()<<" numeros,";
-        cout<<" sua taxa de retorno é de "<<aposta.get_after_round_wage();
+        cout<<" sua taxa de retorno é de "<<aposta.get_retorno_round();
         cout<<" e seu retorno em creditos foi de "<<aposta.get_after_round_wage()<<endl;
         aposta.update_wage();
     }
