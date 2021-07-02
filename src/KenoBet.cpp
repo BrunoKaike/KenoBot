@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <string>
 
 using namespace std;
 set_retorno tabela_de_retorno={
@@ -22,6 +23,8 @@ set_retorno tabela_de_retorno={
     {0, 0, 0, 0.5, 0.5, 2, 3, 5, 12, 50, 150, 500, 1000, 2000, 7500},
     {0, 0, 0, 0.5, 0.5, 1, 2, 5, 15, 50, 150, 300, 600, 1200, 2500, 10000}
 };
+vector<string> reacao_retorno={"Hooray! você ganhou $","Quem sabe na próxima? você manteve $","Mais sorte da próxima! você perdeu $", "Você levantou com o pé esquerdo hoje! Você perdeu $"};
+
 bool KenoBet::add_number( number_type spot_ ){
     for(int i=0; i<this->m_spots.size(); i++)
         if(spot_ == this->m_spots[i])
@@ -176,6 +179,21 @@ cash_type KenoBet::get_inicial_wage( void ) const{
     return inicial_m_wage;
 }
 
-number_type KenoBet::get_retorno_espe(number_type a, number_type b){
+cash_type KenoBet::get_retorno_espe(number_type a, number_type b){
     return tabela_de_retorno[a][b];
+}
+
+string KenoBet::get_reacao_retorno(number_type a){
+    return reacao_retorno[a];
+}
+
+void KenoBet::print_reacao(cash_type inicial, cash_type final){
+    if(final > inicial)
+        cout <<">>> "<< get_reacao_retorno(0) << final - inicial << " créditos!"<< endl;
+    else if(inicial == final)
+        cout <<">>> "<< get_reacao_retorno(1) << final << " créditos."<< endl;
+    else if(final < inicial && final>0)
+        cout <<">>> "<< get_reacao_retorno(2) << inicial - final << " créditos."<< endl;
+    else
+        cout <<">>> "<< get_reacao_retorno(3) << inicial - final << " créditos."<< endl;
 }
