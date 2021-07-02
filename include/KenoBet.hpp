@@ -2,6 +2,7 @@
 #define KENOBET
 #include <cstddef>
 #include <vector>
+#include <string>
 
 using number_type = unsigned short int; //<! data type for a keno hit.
 using cash_type = float; //<! Defines the wage type in this application.
@@ -98,7 +99,13 @@ class KenoBet {
         cash_type get_inicial_wage( void ) const;
 
         //Retorna taxas de retorno especificas
-        number_type get_retorno_espe(number_type a, number_type b);
+        cash_type get_retorno_espe(number_type a, number_type b);
+
+        //Retorna reacao de vetor de reacao de acordo com perca/ganho
+        std::string get_reacao_retorno(number_type a);
+
+        //Printa reacao de acordo com perca/ganho
+        void print_reacao(cash_type inicial, cash_type final);
 
     private:
         set_of_numbers_type m_spots; //<! The player's bet.
