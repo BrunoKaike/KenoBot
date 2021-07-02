@@ -5,20 +5,21 @@
 using namespace std;
 
 #include "../include/KenoBet.hpp"
+#include "../include/validation.hpp"
 
 int main(int argc, char *argv[]){
   
     //Validar arquivo de apostas
-    string lineFromFile;
-    stringstream ss;
-
-    std::fstream file;
-    file.open (argv[1]);
-    if (!file) {
-        cout << "Unable to open file";
-        exit(1); // terminate with error
+    std::vector<string> erros = validate(argv[1]);
+    if (erros.size() != 0){
+        for(int i=0; i<erros.size(); i++)
+            cout<<erros[i]<<endl;
+        exit(1);
     }
 
+    //Abertura de arquivo     
+    std::fstream file;
+    file.open (argv[1]);
     //Loop de Apostas
     while(!file.eof()){ 
     //Abertura de cada aposta do arquivo
