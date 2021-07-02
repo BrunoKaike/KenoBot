@@ -26,6 +26,8 @@ int main(int argc, char *argv[]){
         KenoBet aposta;
         cash_type tempF;
         number_type tempI;
+        string lineFromFile;
+        stringstream ss;
 
         //Passagem de creditos
         getline( file, lineFromFile );
