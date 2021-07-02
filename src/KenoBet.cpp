@@ -120,9 +120,9 @@ void KenoBet::print_spots(){
     set_of_numbers_type num_apostados = this->get_spots();
 
     cout<<"[ ";
-    for(int i=0; i<this->size(); i++)
+    for(int i=0; i<this->m_spots.size(); i++)
         cout<<num_apostados[i]<<" ";
-    cout<<"]\n\n";
+    cout<<"]";
 }
 
 void KenoBet::print_hits(){
@@ -130,7 +130,7 @@ void KenoBet::print_hits(){
     cout<<"[ ";
     for(int i=0; i<m_hits.size(); i++)
         cout<<m_hits[i]<<" ";
-    cout<<"]\n\n";
+    cout<<"]";
 }
 
 size_t KenoBet::size_hits(){
@@ -163,4 +163,19 @@ void KenoBet::update_wage(){
 
 cash_type KenoBet::get_retorno_round(){
     return (tabela_de_retorno[this->get_spots().size()][this->m_hits.size()]);
+}
+
+bool KenoBet::set_inicial_wage( cash_type wage_ ){
+    if(wage_ <= 0)
+        return false;
+    this->inicial_m_wage = wage_;
+    return true;
+}
+
+cash_type KenoBet::get_inicial_wage( void ) const{
+    return inicial_m_wage;
+}
+
+number_type KenoBet::get_retorno_espe(number_type a, number_type b){
+    return tabela_de_retorno[a][b];
 }
