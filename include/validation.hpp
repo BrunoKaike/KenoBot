@@ -6,12 +6,18 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <fstream>
 
 vector<string> errorMessage = {"Arquivo não encontrado! tente um novo diretório.",
 "O arquivo não está de acordo com a formatação definida.",
 "Uma ou mais apostas houveram repetição de números.",
 "Uma ou mais apostas possuem um número inválido"};
 vector<string> errors_return;
+
+bool is_number(string entrada){
+    return !entrada.empty() && std::find_if(entrada.begin(),
+        entrada.end(), [](unsigned char c) { return !std::isdigit(c) && c!='.'; }) == entrada.end();
+}
 
 bool all_is_numbers(string linha){
     stringstream ss;
@@ -106,7 +112,7 @@ bool arq_inexistente(string local){
     return true;
 }
 
-bool is_formated(std::fstream file){
+bool is_formated(std::fstream& file){
     
     while(!file.eof()){ 
             
