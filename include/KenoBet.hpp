@@ -91,6 +91,15 @@ class KenoBet {
         //Retorna a taxa de retorno do round
         cash_type get_retorno_round();
 
+        //Seta credito inicial para fim de comparações
+        bool set_inicial_wage( cash_type wage_ );
+
+        //Pega credito inicial para fim de comparações
+        cash_type get_inicial_wage( void ) const;
+
+        //Retorna taxas de retorno especificas
+        number_type get_retorno_espe(number_type a, number_type b);
+
     private:
         set_of_numbers_type m_spots; //<! The player's bet.
         cash_type m_wage; //<! The player's wage
@@ -101,6 +110,7 @@ class KenoBet {
         set_of_numbers_type m_hits; //NUMEROS ACERTADOS
         number_type m_rounds; //RODADAS
         cash_type m_round_wage; //CREDITO POR RODADA
+        cash_type inicial_m_wage; //CREDITO INICIAL PARA FIM DE COMPARAÇÕES
 };
 
 #endif
