@@ -8,7 +8,9 @@ using namespace std;
 #include "../include/validation.hpp"
 
 int main(int argc, char *argv[]){
-  
+    vector<string> reacao_retorno={"Hooray! você ganhou $","Quem sabe na próxima? você manteve $","Mais sorte da próxima! você perdeu $", "Você levantou com o pé esquerdo hoje! você perdeu $"};
+    int cont=0;
+
     //Validar arquivo de apostas
     std::vector<string> erros = validate(argv[1]);
     if (erros.size() != 0){
@@ -17,9 +19,12 @@ int main(int argc, char *argv[]){
         exit(1);
     }
 
-    //Abertura de arquivo     
+    //Abertura de arquivo  
     std::fstream file;
     file.open (argv[1]);
+    cout << ">>> Lendo arquivo de apostas ["<<argv[1]<<"], por favor aguarde..."<< endl;
+    cout << "-------------------------------------------------------------"<< endl;
+    
     //Loop de Apostas
     while(!file.eof()){ 
     //Abertura de cada aposta do arquivo
@@ -35,6 +40,7 @@ int main(int argc, char *argv[]){
         ss << lineFromFile;  
         ss >> tempF; 
         aposta.set_wage(tempF);
+        aposta.set_inicial_wage(tempF);
 
         //Passagem das rodadas
         getline( file, lineFromFile );
@@ -56,38 +62,55 @@ int main(int argc, char *argv[]){
         }
         
     //Play
-        cout<<"\n\n\n\n=====NOVA APOSTA=====\n";
-
         aposta.set_round_wage();
+        cont++;
+        cout << ">>> Aposta "<<cont<<" do arquivo lida com sucesso!"<< endl;
+
+        cout << "\t Você apostará um total de $" << aposta.get_wage()<< endl;
+        cout << "\t Jogará um total de " << aposta.get_rounds()<< "rodadas, apostando $" << aposta.get_wage()/aposta.get_rounds() << " créditos por rodada"  <<endl;
+        cout << "\n\t Sua aposta tem " << aposta.get_spots().size() << " números, eles são: ";
+        aposta.print_spots();
+        cout << "\n\n\t\t----------------+---------------" << endl;
+        cout << "\t\t| Hits\t\t| Retorno" << endl;
+
+        for(int x = 0; x <= aposta.get_rounds(); x++)
+            cout << "\t\t| "<<x<<"\t\t| "<< aposta.get_retorno_espe(aposta.get_spots().size()-1, x) <<  endl;
+        
         for(int q=1; q<=aposta.get_rounds(); q++){
-            cout<<"\n-----------------"<<endl;
-            cout<<"RODADA "<<q<<"\n\n";
+            cout << "\t\t-------------------------------------------------------------"<< endl;  
             //Dados aposta
-            cout<<"A aposta do round foi do total de: "<<aposta.get_round_wage();
-            
-            cout<<endl<<"Os numeros apostados foram: ";
-            aposta.print_spots();
-
+            cout << "\t\tEsta é a rodada #"<< q <<" de " << aposta.get_rounds() <<", sua aposta é $"<< aposta.get_round_wage() <<". Boa sorte!" << endl;
+        
             //Numeros sorteados
-            cout<<"Os 20 numeros sorteados foram: ";
+            cout<<"\n\t\tOs 20 numeros sorteados foram: ";
             aposta.print_sorteados();
-
-            //Hits
-            cout<<"Os acertos foram: ";
+            
+            //Hits e Ganho
+            cout<<"\t\tVocê acertou os números: ";
             aposta.print_hits();
+            cout<<", um total de " << aposta.size_hits() << " hits de " << aposta.get_spots().size()<<endl;
+            cout<<"\t\tSua taxa de retorno é " << aposta.get_retorno_round() << ", assim você sai com: $" <<aposta.get_after_round_wage()<<endl;
 
-            //Ganho
-            set_of_numbers_type hits = aposta.get_hits(aposta.get_m_sorteados());
-            cout<<"Por apostar "<<aposta.get_round_wage();
-            cout<<" e acertar "<<aposta.size_hits()<<"/"<<aposta.get_spots().size()<<" numeros,";
-            cout<<" sua taxa de retorno é de "<<aposta.get_retorno_round();
-            cout<<" e seu retorno em creditos foi de "<<aposta.get_after_round_wage()<<endl;
             aposta.update_wage();
+            cout<<"\t\tVocê possui um total de: $" << aposta.get_wage() <<" créditos."<<endl;          
         }
-        cout<<"\n-----------------"<<endl;
-        cout<<"Seu creditos finais são de: "<<aposta.get_wage()<<"\n\n";
+        cout << ">>> Fim das rodadas!" << endl;
+        cout << "-------------------------------------------------------------"<< endl;  
+        cout<<"\n======= Sumário ======="<<endl;
+        
+        if(aposta.get_wage() > aposta.get_inicial_wage())
+            cout <<">>> "<< reacao_retorno[0] << aposta.get_wage() - aposta.get_inicial_wage() << " créditos!"<< endl;
+        else if(aposta.get_inicial_wage() == aposta.get_wage())
+            cout <<">>> "<< reacao_retorno[1] << aposta.get_wage() << " créditos."<< endl;
+        else if(aposta.get_wage() < aposta.get_inicial_wage() && aposta.get_wage()>0)
+            cout <<">>> "<< reacao_retorno[2] << aposta.get_inicial_wage() - aposta.get_wage() << " créditos."<< endl;
+        else
+            cout <<">>> "<< reacao_retorno[3] << aposta.get_inicial_wage() - aposta.get_wage() << " créditos."<< endl;
+
+        cout <<">>> Você está saindo do jogo com um total de "<<aposta.get_wage()<<" créditos.";    
+        cout << "\n-------------------------------------------------------------"<< endl;
         aposta.reset();
     }
-    
+        
     return 0;
 }
