@@ -8,9 +8,8 @@ using namespace std;
 #include "../include/validation.hpp"
 
 int main(int argc, char *argv[]){
-    int cont=0;
 
-//Validar arquivo de apostas
+//Validação arquivo de apostas
     std::vector<string> erros = validate(argv[1]);
     if (erros.size() != 0){
         for(int i=0; i<erros.size(); i++)
@@ -24,7 +23,7 @@ int main(int argc, char *argv[]){
     cout << ">>> Lendo arquivo de apostas ["<<argv[1]<<"], por favor aguarde..."<< endl;
     cout << "-------------------------------------------------------------"<< endl;
 
-//Abertura de cada aposta do arquivo
+//Passagem de valores
     KenoBet aposta;
     cash_type tempF;
     number_type tempI;
@@ -60,8 +59,8 @@ int main(int argc, char *argv[]){
     
 //Play
     aposta.set_round_wage();
-    cont++;
-    cout << ">>> Aposta "<<cont<<" do arquivo lida com sucesso!"<< endl;
+    //Dados aposta
+    cout << ">>> Aposta do arquivo lida com sucesso!"<< endl;
     cout << "\t Você apostará um total de $" << aposta.get_wage()<<".\n";
     cout << "\t Jogará um total de " << aposta.get_rounds()<< " rodadas, apostando $" << aposta.get_wage()/aposta.get_rounds() << " créditos por rodada." <<endl;
     cout << "\n\t Sua aposta tem " << aposta.get_spots().size() << " números, eles são: ";
@@ -74,7 +73,7 @@ int main(int argc, char *argv[]){
     
     for(int q=1; q<=aposta.get_rounds(); q++){
         cout << "\t\t-------------------------------------------------------------"<< endl;  
-        //Dados aposta
+        //Dados rodada
         cout << "\t\tEsta é a rodada #"<< q <<" de " << aposta.get_rounds() <<", sua aposta é $"<< aposta.get_round_wage() <<". Boa sorte!" << endl;
     
         //Numeros sorteados
