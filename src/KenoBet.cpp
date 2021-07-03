@@ -1,8 +1,4 @@
 #include "../include/KenoBet.hpp"
-#include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <string>
 
 using namespace std;
 set_retorno tabela_de_retorno={
