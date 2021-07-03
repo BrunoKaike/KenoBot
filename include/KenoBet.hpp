@@ -1,7 +1,9 @@
 #ifndef KENOBET
 #define KENOBET
 #include <cstddef>
+#include <iostream>
 #include <vector>
+#include <cstdlib>
 #include <string>
 
 using number_type = unsigned short int; //<! data type for a keno hit.
