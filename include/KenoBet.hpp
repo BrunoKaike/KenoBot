@@ -109,6 +109,12 @@ class KenoBet {
         //Printa reacao de acordo com perca/ganho
         void print_reacao(cash_type inicial, cash_type final);
 
+        //Swap
+        template<class InputIt>
+        void swap(InputIt first, InputIt second);
+
+        //Ordenar numeros sorteados
+        void sorteados_sort();
     private:
         set_of_numbers_type m_spots; //<! The player's bet.
         cash_type m_wage; //<! The player's wage
