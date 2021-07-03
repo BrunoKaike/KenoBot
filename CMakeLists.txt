@@ -13,6 +13,7 @@ include_directories( include )
 # Cria um executável com nome "Keno", adiciona neste executável a classe KenoBet.cpp seu main.cpp
 add_executable( Keno
                 src/KenoBet.cpp
-                src/main.cpp )
+                src/main.cpp 
+                src/validation.cpp)
 
 # The end
