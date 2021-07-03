@@ -91,7 +91,7 @@ void KenoBet::set_m_sorteados(){
         if(apto == 1)
             this->m_sorteados.push_back(random);
     }
-
+    sorteados_sort();
 }
 set_of_numbers_type KenoBet::get_m_sorteados(){
     return this->m_sorteados;
@@ -192,4 +192,18 @@ void KenoBet::print_reacao(cash_type inicial, cash_type final){
         cout <<">>> "<< get_reacao_retorno(2) << inicial - final << " créditos."<< endl;
     else
         cout <<">>> "<< get_reacao_retorno(3) << inicial - final << " créditos."<< endl;
+}
+
+template<class InputIt>
+void KenoBet::swap(InputIt first, InputIt second){
+    auto aux = *first;
+    *first = *second;
+    *second = aux;
+}
+
+void KenoBet::sorteados_sort(){
+    for(int x = 0; x < this->m_sorteados.size()-1; x++)
+      for(int i = 0; i < this->m_sorteados.size()-x-1; i++)
+        if(this->m_sorteados[i] > this->m_sorteados[i+1])
+            swap(&this->m_sorteados[i], &this->m_sorteados[i+1]);
 }
