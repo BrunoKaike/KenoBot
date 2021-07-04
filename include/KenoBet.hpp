@@ -92,7 +92,7 @@ class KenoBet {
         void update_wage();
     
         //Retorna a taxa de retorno do round
-        cash_type get_retorno_round();
+        number_type get_retorno_round();
 
         //Seta credito inicial para fim de comparações
         bool set_inicial_wage( cash_type wage_ );
@@ -114,11 +114,14 @@ class KenoBet {
         void swap(InputIt first, InputIt second);
 
         //Ordenar numeros sorteados
-        void sorteados_sort();
+        set_of_numbers_type sort(set_of_numbers_type lista);
+
+        //Ordenar numeros apostados
+        void sort_spots();
+        
     private:
         set_of_numbers_type m_spots; //<! The player's bet.
         cash_type m_wage; //<! The player's wage
-
 
         //+++++++++++++NOVOS+++++++++++++
         set_of_numbers_type m_sorteados; //NUMEROS SORTEADOS PARA A APOSTA 
