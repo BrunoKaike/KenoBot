@@ -74,12 +74,8 @@ set_of_numbers_type KenoBet::get_spots( void ) const{
 //+++++++++++++NOVOS+++++++++++++
 void KenoBet::set_m_sorteados(){
     int random, apto;
-
-    //Limpar caso tiver numeros
-    if(this->m_sorteados.size()>0)
-        this->m_sorteados.clear();
-
-    //Sorteio de 20 numeros
+    
+    this->m_sorteados.clear();
     while(this->m_sorteados.size()<20){
         apto = 1;
         random = (rand() % 80) + 1;
@@ -91,7 +87,7 @@ void KenoBet::set_m_sorteados(){
         if(apto == 1)
             this->m_sorteados.push_back(random);
     }
-    sorteados_sort();
+    this->m_sorteados = sort(this->m_sorteados);
 }
 set_of_numbers_type KenoBet::get_m_sorteados(){
     return this->m_sorteados;
@@ -106,9 +102,7 @@ void KenoBet::print_wage(){
 }
 
 void KenoBet::print_sorteados(){
-    //Preenche m_sorteados com 20 numeros aleatorios
     set_m_sorteados();
-    //Printa sorteados
     cout<<"[ ";
     for(int i=0; i<20; i++)
         cout<<this->m_sorteados[i]<<" ";
@@ -160,7 +154,7 @@ void KenoBet::update_wage(){
     this->m_wage = this->m_wage - this->m_round_wage + this->get_round_wage()*(tabela_de_retorno[this->get_spots().size()][this->m_hits.size()]);
 }
 
-cash_type KenoBet::get_retorno_round(){
+number_type KenoBet::get_retorno_round(){
     return (tabela_de_retorno[this->get_spots().size()][this->m_hits.size()]);
 }
 
@@ -201,9 +195,14 @@ void KenoBet::swap(InputIt first, InputIt second){
     *second = aux;
 }
 
-void KenoBet::sorteados_sort(){
-    for(int x = 0; x < this->m_sorteados.size()-1; x++)
-      for(int i = 0; i < this->m_sorteados.size()-x-1; i++)
-        if(this->m_sorteados[i] > this->m_sorteados[i+1])
-            swap(&this->m_sorteados[i], &this->m_sorteados[i+1]);
+set_of_numbers_type KenoBet::sort(set_of_numbers_type lista){
+    for(int x = 0; x < lista.size()-1; x++)
+      for(int i = 0; i < lista.size()-x-1; i++)
+        if(lista[i] > lista[i+1])
+            swap(&lista[i], &lista[i+1]);
+    return lista;
+}
+
+void KenoBet::sort_spots(){
+    this->m_spots = sort(this->m_spots);
 }
