@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include<bits/stdc++.h>
 using namespace std;
 
 #include "../include/KenoBet.hpp"
@@ -55,14 +56,15 @@ int main(int argc, char *argv[]){
         ss << lineFromFile.substr(start, end - start);
         ss >> tempI; 
         aposta.add_number(tempI);
-    }
+    }aposta.sort_spots();
     
 //Play
     aposta.set_round_wage();
     //Dados aposta
+    std::setprecision(2);
     cout << ">>> Aposta do arquivo lida com sucesso!"<< endl;
-    cout << "\t Você apostará um total de $" << aposta.get_wage()<<".\n";
-    cout << "\t Jogará um total de " << aposta.get_rounds()<< " rodadas, apostando $" << aposta.get_wage()/aposta.get_rounds() << " créditos por rodada." <<endl;
+    cout << "\t Você apostará um total de $" <<  ceil(  aposta.get_wage()  *100)/100 <<".\n";
+    cout << "\t Jogará um total de " << aposta.get_rounds()<< " rodadas, apostando $" << ceil(  aposta.get_wage()/aposta.get_rounds()  *100)/100 << " créditos por rodada." <<endl;
     cout << "\n\t Sua aposta tem " << aposta.get_spots().size() << " números, eles são: ";
     aposta.print_spots();
     cout << "\n\n\t\t----------------+---------------" << endl;
@@ -74,7 +76,7 @@ int main(int argc, char *argv[]){
     for(int q=1; q<=aposta.get_rounds(); q++){
         cout << "\t\t-------------------------------------------------------------"<< endl;  
         //Dados rodada
-        cout << "\t\tEsta é a rodada #"<< q <<" de " << aposta.get_rounds() <<", sua aposta é $"<< aposta.get_round_wage() <<". Boa sorte!" << endl;
+        cout << "\t\tEsta é a rodada #"<< q <<" de " << aposta.get_rounds() <<", sua aposta é $"<< fixed << setprecision(2) << aposta.get_round_wage() <<". Boa sorte!" << endl;
     
         //Numeros sorteados
         cout<<"\n\t\tOs 20 numeros sorteados foram: ";
