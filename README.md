@@ -15,7 +15,7 @@ Num casino tradicional, o jogo do Keno é composto por uma tômbola com 80 bolas
 <center>
 <img src="img/keno (1).png">
 </center>
-O projeto KenoBot foi desenvolvido utilizando da linguagem C++ e o gerador de sistema de compilação Cmake.
+O projeto KenoBot foi desenvolvido utilizando da linguagem C++ e do gerador de sistema de compilação Cmake.
 
 ## Compilando com cmake
 ```
