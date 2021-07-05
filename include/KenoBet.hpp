@@ -118,6 +118,9 @@ class KenoBet {
 
         //Ordenar numeros apostados
         void sort_spots();
+
+        //Destrutor
+        ~KenoBet();
         
     private:
         set_of_numbers_type m_spots; //<! The player's bet.
