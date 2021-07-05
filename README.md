@@ -63,9 +63,9 @@ Angelo Gustavo Souza Marinho Morais de Sales -
 ## Contato
 
 Bruno Kaike do Nascimento Batista
-*<brunokaike2014@gmail.com>*
+*<brunokaike@ufrn.edu.br>*
 
-Bruno Kaike do Nascimento Batista
+Angelo Gustavo Souza Marinho Morais de Sales
 *<brunokaike2014@gmail.com>*
 
 Link do projeto: [https://github.com/JulioMelo-Classes/trabalho-1-BrunoKaike.git](https://github.com/JulioMelo-Classes/trabalho-1-BrunoKaike.git)
