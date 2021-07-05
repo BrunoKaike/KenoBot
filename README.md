@@ -1,4 +1,4 @@
-# Trabalho-1
+# Trabalho 1: Keno
 Repositório contendo as especificações do Trabalho 1 da disciplina de LP1
 
 ## Compilando com cmake
@@ -11,7 +11,7 @@ cmake --build .
 
 A compilação gera um executável com o nome Keno dentro da pasta build. Logo após a compilação, para executar o programa gerado para cada teste use os comandos:
 
-Teste 1 (Formatação OK)
+Teste 1 (OK)
 ```
 ./Keno ../data/teste1.dat
 ```
@@ -31,7 +31,7 @@ Teste 4 (Repetição de números)
 ./Keno ../data/teste4.dat
 ```
 
-Teste 5 (Formtação OK)
+Teste 5 (OK)
 ```
 ./Keno ../data/teste5.dat
 ```
