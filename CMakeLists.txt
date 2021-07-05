@@ -7,10 +7,10 @@ project(GraalLibrary VERSION 0.1 LANGUAGES CXX )
 #--------------------------------
 
 ### Application target
-# configura o diretório contendo os .h, assim você pode incluílos apenas com include "arquivo.hpp"
+# Diretório contendo os .hpp
 include_directories( include )
 
-# Cria um executável com nome "Keno", adiciona neste executável a classe KenoBet.cpp seu main.cpp
+# Cria um executável com nome "Keno", adiciona neste executável a classe KenoBet.cpp, main.cpp e validation.cpp
 add_executable( Keno
                 src/KenoBet.cpp
                 src/main.cpp 
