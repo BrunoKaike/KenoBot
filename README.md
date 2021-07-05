@@ -1,5 +1,21 @@
-# Trabalho 1: Keno
-Repositório contendo as especificações do Trabalho 1 da disciplina de LP1
+# Projeto KenoBot
+KenoBot é um projeto para executar apostas de Keno baseada em arquivos de texto.
+
+## Objetivos
+
+Projeto desenvolvido e apresentado ao curso de Tecnologia da Informação da Universidade Federal do Rio Grande do Norte, como requisito parcial para obtenção de nota na disciplina de Linguagem de Programação I, ministrada pelo professor Julio Cesar Paulino de Melo(*<julio.melo@imd.ufrn.br>*).
+
+## O que é Keno?
+
+O Keno é um jogo de loteria muito popular nos casinos modernos, e utilizado igualmente nas loterias estatais.
+
+Num casino tradicional, o jogo do Keno é composto por uma tômbola com 80 bolas numeradas. Os jogadores marcam nos seus cartões (numerados de 1 a 80) alguns dos números. O montante de números marcados varia de casino para casino, mas geralmente varia entre um e quinze.
+
+## Sobre o projeto
+<center>
+<img src="img/keno.png">
+</center>
+O projeto KenoBot foi desenvolvido utilizando da linguagem C++ e o gerador de sistema de compilação Cmake.
 
 ## Compilando com cmake
 ```
@@ -35,3 +51,21 @@ Teste 5 (OK)
 ```
 ./Keno ../data/teste5.dat
 ```
+
+## Autores
+
+Bruno Kaike do Nascimento Batista -
+[GitHub](https://github.com/BrunoKaike)
+
+Angelo Gustavo Souza Marinho Morais de Sales -
+[GitHub](https://github.com/AngeloGustavo)
+
+## Contato
+
+Bruno Kaike do Nascimento Batista
+*<brunokaike2014@gmail.com>*
+
+Bruno Kaike do Nascimento Batista
+*<brunokaike2014@gmail.com>*
+
+Link do projeto: [https://github.com/JulioMelo-Classes/trabalho-1-BrunoKaike.git](https://github.com/JulioMelo-Classes/trabalho-1-BrunoKaike.git)
