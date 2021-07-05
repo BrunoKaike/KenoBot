@@ -206,3 +206,5 @@ set_of_numbers_type KenoBet::sort(set_of_numbers_type lista){
 void KenoBet::sort_spots(){
     this->m_spots = sort(this->m_spots);
 }
+
+KenoBet::~KenoBet(){};
