@@ -132,6 +132,7 @@ set_of_numbers_type KenoBet::get_m_sorteados(){
 //! Uma função para settar os acertos
 /*!
 * \return um set_of_numbers_type.
+* \sa get_hits() 
 */
 void KenoBet::set_hits(){
     this->m_hits = get_hits(this->m_sorteados);
@@ -146,6 +147,7 @@ void KenoBet::print_wage(){
 
 //! Uma função para imprimir os números sorteados
 /*!
+* \sa set_m_sorteados() 
 */
 void KenoBet::print_sorteados(){
     set_m_sorteados();
@@ -283,6 +285,7 @@ string KenoBet::get_reacao_retorno(number_type a){
 /*!
 * \param inicial um cash_type que representa o valor em créditos da aposta inicial.
 * \param final um cash_type que representa o valor em créditos da receita atual ao fim de todas as rodadas.
+* \sa get_reacao_retorno() 
 */
 void KenoBet::print_reacao(cash_type inicial, cash_type final){
     if(final > inicial)
@@ -311,6 +314,7 @@ void KenoBet::swap(InputIt first, InputIt second){
 /*!
 * \param lista um set_of_numbers_type que representa uma lista de números apostados/acertados/sorteados.
 * \return um set_of_numbers_type.
+* \sa swap() 
 */
 set_of_numbers_type KenoBet::sort(set_of_numbers_type lista){
     for(int x = 0; x < lista.size()-1; x++)
@@ -322,6 +326,7 @@ set_of_numbers_type KenoBet::sort(set_of_numbers_type lista){
 
 //! Uma função para ordenar a lista de números apostados.
 /*!
+* \sa sort() 
 */
 void KenoBet::sort_spots(){
     this->m_spots = sort(this->m_spots);
