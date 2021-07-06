@@ -71,7 +71,7 @@ int main(int argc, char *argv[]){
     cout << "\t\t| Hits\t\t| Retorno" << endl;
 
     for(int x = 0; x <= aposta.get_spots().size(); x++)
-        cout << "\t\t| "<<x<<"\t\t| "<< aposta.get_retorno_espe(aposta.get_spots().size(), x) <<  endl;
+        cout << "\t\t| "<<x<<"\t\t\t| "<< aposta.get_retorno_espe(aposta.get_spots().size(), x) <<  endl;
     
     for(int q=1; q<=aposta.get_rounds(); q++){
         cout << "\t\t-------------------------------------------------------------"<< endl;  
