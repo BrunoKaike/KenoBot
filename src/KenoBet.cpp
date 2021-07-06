@@ -19,7 +19,7 @@ set_retorno tabela_de_retorno={
     {0, 0, 0, 0.5, 0.5, 2, 3, 5, 12, 50, 150, 500, 1000, 2000, 7500},
     {0, 0, 0, 0.5, 0.5, 1, 2, 5, 15, 50, 150, 300, 600, 1200, 2500, 10000}
 }; /**< Matriz de set_retorno que representa os multiplicadores de retorno */
-vector<string> reacao_retorno={"Hooray! você ganhou $","Quem sabe na próxima? você manteve $","Mais sorte da próxima! você perdeu $", "Você levantou com o pé esquerdo hoje! Você perdeu $"}; /**< Vetor de string que representa as reações de resposta ao final da última rodada */
+vector<string> reacao_retorno={"Hooray! Você ganhou $","Quem sabe na próxima? Você manteve $","Mais sorte da próxima! Você perdeu $", "Você levantou com o pé esquerdo hoje! Você perdeu $"}; /**< Vetor de string que representa as reações de resposta ao final da última rodada */
 
 //! Uma função para adicionar um número a lista de números apostados.
 /*!
@@ -109,7 +109,7 @@ void KenoBet::set_m_sorteados(){
     this->m_sorteados.clear();
     while(this->m_sorteados.size()<20){
         apto = 1;
-        random = (rand() % 80) + 1;
+        random = ((time(NULL)*rand()) % 80) + 1;
         for(int i=0; i<this->m_sorteados.size(); i++)
             if(this->m_sorteados[i] == random){
                 apto = 0;
