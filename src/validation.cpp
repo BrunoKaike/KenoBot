@@ -33,7 +33,7 @@ bool all_is_numbers(string linha){
         aux = linha.substr(start, end - start);
 
         if(!(!aux.empty() && std::find_if(aux.begin(),
-        aux.end(), [](unsigned char c) { return !std::isdigit(c); }) == aux.end())){
+        aux.end(), [](unsigned char c) { int ponto = 0; if(c!='.'){ponto++;} return (!std::isdigit(c) && c!='.') || ponto >= 1; }) == aux.end())){
 
             return false;
 
