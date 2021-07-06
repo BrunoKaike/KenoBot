@@ -15,7 +15,7 @@ vector<string> errors_return; /**< Vetor de string que irá armazenar os erros d
 */
 bool is_number(string entrada){
     return !entrada.empty() && std::find_if(entrada.begin(),
-        entrada.end(), [](unsigned char c) { int ponto = 0; if(c!='.'){ponto++;} return (!std::isdigit(c) && c!='.') || ponto >= 1; }) == entrada.end();
+        entrada.end(), [](unsigned char c) { return !std::isdigit(c) && c!='.'; }) == entrada.end();
 }
 
 //! Uma função para identificar se uma string contém uma lista de inteiros separados por espaço.
@@ -33,7 +33,7 @@ bool all_is_numbers(string linha){
         aux = linha.substr(start, end - start);
 
         if(!(!aux.empty() && std::find_if(aux.begin(),
-        aux.end(), [](unsigned char c) { return !std::isdigit(c) && c!='.'; }) == aux.end())){
+        aux.end(), [](unsigned char c) { return !std::isdigit(c); }) == aux.end())){
 
             return false;
 
