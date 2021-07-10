@@ -308,21 +308,26 @@ void KenoBet::swap(InputIt first, InputIt second){
     *second = aux;
 }
 
-//! Uma função para ordenar uma lista de set_of_numbers_type de forma crescente.
+//! Função estilo 'Insertion Sort' para ordenar uma lista de set_of_numbers_type de forma crescente.
 /*!
 * \param lista um set_of_numbers_type que representa uma lista de números apostados/acertados/sorteados.
 * \return um set_of_numbers_type.
 * \sa swap() 
 */
 set_of_numbers_type KenoBet::sort(set_of_numbers_type lista){
-    for(int x = 0; x < lista.size()-1; x++)
-      for(int i = 0; i < lista.size()-x-1; i++)
-        if(lista[i] > lista[i+1])
-            swap(&lista[i], &lista[i+1]);
+    int i, j;
+    for(i=1; i<lista.size(); i++){
+        auto atual = lista[i];
+        j = i-1;
+        while(j>=0 && lista[j]>atual){
+            swap(&lista[j+1], &lista[j]);
+            j = j-1;
+        }
+        swap(&lista[j+1], &atual);
+    }
+    
     return lista;
 }
-
-
 
 //! Uma função para ordenar a lista de números apostados.
 /*!
