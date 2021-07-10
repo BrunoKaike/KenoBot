@@ -79,10 +79,12 @@ int main(int argc, char *argv[]){
         cout << "\t\tEsta é a rodada #"<< q <<" de " << aposta.get_rounds() <<", sua aposta é $"<< fixed << setprecision(2) << aposta.get_round_wage() <<". Boa sorte!" << endl;
     
         //Numeros sorteados
+        aposta.set_m_sorteados();
         cout<<"\n\t\tOs 20 numeros sorteados foram: ";
         aposta.print_sorteados();
         
         //Hits e Ganho
+        aposta.set_hits();
         cout<<"\t\tVocê acertou os números: ";
         aposta.print_hits();
         cout<<", um total de " << aposta.size_hits() << " hits de " << aposta.get_spots().size()<<".\n";
