@@ -150,7 +150,6 @@ void KenoBet::print_wage(){
 * \sa set_m_sorteados() 
 */
 void KenoBet::print_sorteados(){
-    set_m_sorteados();
     cout<<"[ ";
     for(int i=0; i<20; i++)
         cout<<this->m_sorteados[i]<<" ";
@@ -173,7 +172,6 @@ void KenoBet::print_spots(){
 /*!
 */
 void KenoBet::print_hits(){
-    set_hits();
     cout<<"[ ";
     for(int i=0; i<m_hits.size(); i++)
         cout<<m_hits[i]<<" ";
@@ -323,6 +321,8 @@ set_of_numbers_type KenoBet::sort(set_of_numbers_type lista){
             swap(&lista[i], &lista[i+1]);
     return lista;
 }
+
+
 
 //! Uma função para ordenar a lista de números apostados.
 /*!
