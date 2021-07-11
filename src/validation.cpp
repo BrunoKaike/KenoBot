@@ -13,14 +13,24 @@ vector<string> errorMessage = {"Arquivo não encontrado! tente um novo diretóri
 
 vector<string> errors_return; /**< Vetor de string que irá armazenar os erros de validação, caso sejam encontrados */
 
-//! Uma função para identificar se uma string contém apenas números ou pontos.
+//! Uma função para identificar se uma string contém apenas números ou pontos flutuantes.
+/*!
+* \param entrada uma string que representa um fragmento do arquivo de texto contendo o valor apostado ou o número de rodadas.
+* \return um booleano.
+*/
+bool is_number_or_float(string entrada){
+    return !entrada.empty() && std::find_if(entrada.begin(),
+        entrada.end(), [](unsigned char c) { return !std::isdigit(c) && c!='.'; }) == entrada.end();
+}
+
+//! Uma função para identificar se uma string contém apenas números.
 /*!
 * \param entrada uma string que representa um fragmento do arquivo de texto contendo o valor apostado ou o número de rodadas.
 * \return um booleano.
 */
 bool is_number(string entrada){
     return !entrada.empty() && std::find_if(entrada.begin(),
-        entrada.end(), [](unsigned char c) { return !std::isdigit(c) && c!='.'; }) == entrada.end();
+        entrada.end(), [](unsigned char c) { return !std::isdigit(c); }) == entrada.end();
 }
 
 //! Uma função para identificar se uma string contém mais de 1 ponto flutuante.
@@ -167,7 +177,7 @@ bool is_formated(std::fstream& file){
         
         //Passagem do valor
         getline( file, lineFromFile );
-        if(!is_number(lineFromFile)){
+        if(!is_number_or_float(lineFromFile)){
             errors_return.push_back(errorMessage[4]);
             return false;
             
