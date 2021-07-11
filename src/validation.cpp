@@ -4,11 +4,11 @@
 vector<string> errorMessage = {"Arquivo não encontrado! tente um novo diretório.",
 "O arquivo não está de acordo com a formatação definida.",
 "Uma ou mais apostas houveram repetição de números.",
-"Uma ou mais apostas possuem um número inválido",
-"Possui caracteres estranhos ou mais de uma entrada",
-"Possui mais de um ponto flutuante",
-"Quantidade de números apostados superior a 15 ou inferior a 1",
-"Lista de números apostados possui caracteres estranhos",
+"Uma ou mais apostas possuem um número inválido.",
+"Possui caracteres estranhos ou mais de uma entrada.",
+"Possui mais de um ponto flutuante.",
+"Quantidade de números apostados superior a 15 ou inferior a 1.",
+"Lista de números apostados possui caracteres estranhos.",
 }; /**< Vetor de string contendo todos os possíveis erros de validação */
 
 vector<string> errors_return; /**< Vetor de string que irá armazenar os erros de validação, caso sejam encontrados */
