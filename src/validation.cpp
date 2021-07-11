@@ -4,7 +4,12 @@
 vector<string> errorMessage = {"Arquivo não encontrado! tente um novo diretório.",
 "O arquivo não está de acordo com a formatação definida.",
 "Uma ou mais apostas houveram repetição de números.",
-"Uma ou mais apostas possuem um número inválido"}; /**< Vetor de string contendo todos os possíveis erros de validação */
+"Uma ou mais apostas possuem um número inválido",
+"Possui caracteres estranhos ou mais de uma entrada",
+"Possui mais de um ponto flutuante",
+"Quantidade de números apostados superior a 15 ou inferior a 1",
+"Lista de números apostados possui caracteres estranhos",
+}; /**< Vetor de string contendo todos os possíveis erros de validação */
 
 vector<string> errors_return; /**< Vetor de string que irá armazenar os erros de validação, caso sejam encontrados */
 
@@ -16,6 +21,21 @@ vector<string> errors_return; /**< Vetor de string que irá armazenar os erros d
 bool is_number(string entrada){
     return !entrada.empty() && std::find_if(entrada.begin(),
         entrada.end(), [](unsigned char c) { return !std::isdigit(c) && c!='.'; }) == entrada.end();
+}
+
+//! Uma função para identificar se uma string contém mais de 1 ponto flutuante.
+/*!
+* \param entrada uma string que representa um fragmento do arquivo de texto contendo o valor apostado.
+* \return um booleano.
+*/
+bool qtd_pontos(string entrada){
+    int pontos = 0;
+    for(auto i = entrada.begin(); i != entrada.end(); i++){
+        if(*i=='.'){
+            pontos++;
+        }
+    }
+    return pontos <= 1;
 }
 
 //! Uma função para identificar se uma string contém uma lista de inteiros separados por espaço.
@@ -148,7 +168,13 @@ bool is_formated(std::fstream& file){
         //Passagem do valor
         getline( file, lineFromFile );
         if(!is_number(lineFromFile)){
+            errors_return.push_back(errorMessage[4]);
+            return false;
             
+        }
+        
+        if(!qtd_pontos(lineFromFile)){
+            errors_return.push_back(errorMessage[5]);
             return false;
             
         }
@@ -156,7 +182,7 @@ bool is_formated(std::fstream& file){
         //Passagem das rodadas
         getline( file, lineFromFile );
         if(!is_number(lineFromFile)){
-            
+            errors_return.push_back(errorMessage[4]);
             return false;
             
         }
@@ -165,13 +191,13 @@ bool is_formated(std::fstream& file){
         //Passagem dos numeros apostados
         getline(file, lineFromFile);
         if(!qtd_num_aposta(lineFromFile)){
-            
+            errors_return.push_back(errorMessage[6]);
             return false;
             
         }
         
         if(!all_is_numbers(lineFromFile)){
-            
+            errors_return.push_back(errorMessage[7]);
             return false;
             
         }
