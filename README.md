@@ -32,7 +32,7 @@ Teste 1 (OK)
 ./Keno ../data/teste1.dat
 ```
 
-Teste 2 (Formatação diferente)
+Teste 2 (Possui mais de uma entrada)
 ```
 ./Keno ../data/teste2.dat
 ```
@@ -50,6 +50,21 @@ Teste 4 (Repetição de números)
 Teste 5 (OK)
 ```
 ./Keno ../data/teste5.dat
+```
+
+Teste 6 (Possui mais de um ponto flutuante)
+```
+./Keno ../data/teste6.dat
+```
+
+Teste 7 (Quantidade de números apostados superior a 15 ou inferior a 1)
+```
+./Keno ../data/teste7.dat
+```
+
+Teste 8 (Lista de números apostados possui caracteres estranhos)
+```
+./Keno ../data/teste8.dat
 ```
 
 ## Autores
