@@ -13,6 +13,9 @@ using namespace std;
 // Retorna true se uma string contém um número inteiro ou real
 bool is_number(string entrada);
 
+// Retorna true se uma string contém menos de 2 pontos flutuantes
+bool qtd_pontos(string entrada);
+
 // Retorna true se uma string contém uma lista de números separados por espaço
 bool all_is_numbers(string linha);
 
