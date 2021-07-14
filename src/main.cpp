@@ -8,6 +8,21 @@ using namespace std;
 #include "../include/KenoBet.hpp"
 #include "../include/validation.hpp"
 
+/*
+Avaliação
+Processamento do Arquivo de Entrada: 1
+Execução correta: 1
+Interfcace Textual: 1
+Documentação: 1
+Compilação automatizada: 1
+Organização em src, include, build, data: 1
+
+Observações:
+Vocês poderiam ter oganizado a parte de validação em uma classe separada. O uso do
+rand feito por vcs é muito propenso a repetir números... Ao invés de multiplicar
+pelo tempo vcs poderiam apenas setar uma semente e usar o rand puro.
+*/
+
 int main(int argc, char *argv[]){
 
 //Validação arquivo de apostas
